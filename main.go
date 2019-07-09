@@ -8,9 +8,7 @@ import (
 )
 
 func main() {
-	source := &simple.BytesTest{
-		Data: []byte{},
-	}
+	source := &simple.BytesTest{Data: []byte{}}
 	unmarshalled := simple.BytesTest{}
 
 	pr, err := proto.Marshal(source)
@@ -19,7 +17,11 @@ func main() {
 		return
 	}
 
-	proto.Unmarshal(pr, &unmarshalled)
+	err = proto.Unmarshal(pr, &unmarshalled)
+	if err != nil {
+		fmt.Println("Error in unmarshalling:", err)
+		return
+	}
 	fmt.Printf("Data in source: %#v\n", source.Data)
 	fmt.Println("Nil check result in original object:", nil == source.Data)
 	fmt.Printf("Data after Unmarshal: %#v\n", unmarshalled.Data)
