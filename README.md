@@ -9,4 +9,8 @@ protoc --version
 protoc  --go_out=./ simple/*.proto
 dep ensure
 go run main.go
+# Data in source: []byte{}
+# Nil check result in original object: false
+# Data after Unmarshal: []byte(nil)
+# Nil check result in unmarshalled object: true
 ```
