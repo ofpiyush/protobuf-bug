@@ -1,6 +1,10 @@
 syntax = "proto3";
 package simple;
 
+import "google/protobuf/wrappers.proto";
+
 message BytesTest {
     bytes Data = 1;
+    google.protobuf.BytesValue BytesEmpty = 2;
+    google.protobuf.BytesValue BytesNull= 3;
 }
